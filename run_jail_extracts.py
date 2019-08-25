@@ -44,5 +44,5 @@ async def _run_all():
     await asyncio.gather( *( p.fetch() for p in fetches ) )
 
 loop = asyncio.get_event_loop()
-loop.run_until_complete( _run_all )
+loop.run_until_complete( _run_all() )
 
