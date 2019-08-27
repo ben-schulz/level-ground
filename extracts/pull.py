@@ -8,11 +8,15 @@ import requests
 from extracts.converters import excel_to_csv
 
 
-def datestamp_filename_today( name, suffix=None ):
-    _today = datetime.datetime.today()
+def _today():
+    _day = datetime.datetime.today()
     formatstr = '%Y-%m-%d'
-    stamp = _today.strftime( formatstr )
+    return _day.strftime( formatstr )
+    
 
+def datestamp_filename_today( name, suffix=None ):
+
+    stamp = _today()
     if suffix is not None:
         return f'{name}_{stamp}.{suffix}'
     else:
@@ -48,6 +52,7 @@ class PublicUrl:
                   request_body=None,
                   retry_horizon=None,
                   output_converter=None,
+                  datestamp=None,
     ):
 
         if not PublicUrl.is_allowed_verb( http_verb ):
@@ -67,6 +72,8 @@ class PublicUrl:
 
         self.convert_output = output_converter
         self.converted_suffix = 'csv'
+
+        self.datestamp = datestamp or _today()
 
         twelve_hours = datetime.timedelta( hours=12 ).total_seconds()
         self.retry_horizon = ( retry_horizon or twelve_hours )
