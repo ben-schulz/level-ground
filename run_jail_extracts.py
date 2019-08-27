@@ -5,9 +5,10 @@ import os
 from extracts import PublicUrl
 from extracts.converters import excel_to_csv
 
-_today = datetime.datetime.today()
+_today = datetime.datetime.utcnow()
 formatstr = '%Y-%m-%d'
-datestamp = _today.strftime( formatstr )
+utc_datestamp = _today.strftime( formatstr )
+cst_datestamp = ( _today - datetime.timedelta( days=1 ) ).strftime( formatstr )
 
 output_dir = os.path.expanduser( '~/extract_dump' )
 
@@ -15,7 +16,7 @@ output_dir = os.path.expanduser( '~/extract_dump' )
 def seven_hundred_report():
 
     name = '0700_report'
-    url = f'https://report.boonecountymo.org/mrcjava/servlet/SH01_MP.R00070s?run=1&outfmt=13&D_DETAIL=1&R001={datestamp}&R001={datestamp}'
+    url = f'https://report.boonecountymo.org/mrcjava/servlet/SH01_MP.R00070s?run=1&outfmt=13&D_DETAIL=1&R001={cst_datestamp}&R001={cst_datestamp}'
 
     headers = {
 
