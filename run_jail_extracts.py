@@ -35,6 +35,7 @@ def seven_hundred_report():
     return PublicUrl( name, url, output_dir,
                       headers=headers,
                       output_converter=excel_to_csv,
+                      datestamp=cst_datestamp,
     )
 
 def current_detainees():
@@ -57,6 +58,7 @@ def current_detainees():
     return PublicUrl( name, url, output_dir,
                       headers=headers,
                       output_converter=excel_to_csv,
+                      datestamp=cst_datestamp,
     )
 
 
