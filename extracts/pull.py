@@ -14,9 +14,8 @@ def _today():
     return _day.strftime( formatstr )
     
 
-def datestamp_filename_today( name, suffix=None ):
+def datestamp_filename_today( name, stamp, suffix=None ):
 
-    stamp = _today()
     if suffix is not None:
         return f'{name}_{stamp}.{suffix}'
     else:
@@ -81,7 +80,7 @@ class PublicUrl:
 
     def write_result( self, response ):
 
-        outfile_basename = datestamp_filename_today( self.name )
+        outfile_basename = datestamp_filename_today( self.name, self.datestamp )
         out_path = os.path.join( self.output_dir, outfile_basename )
 
         with open( out_path, 'wb' ) as f:
