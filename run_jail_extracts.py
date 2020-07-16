@@ -16,7 +16,7 @@ output_dir = os.path.expanduser( '~/extract_dump' )
 def seven_hundred_report():
 
     name = '0700_report'
-    url = f'https://report.boonecountymo.org/mrcjava/servlet/SH01_MP.R00070s?run=1&outfmt=13&D_DETAIL=1&R001={cst_datestamp}&R001={cst_datestamp}'
+    url = "https://report.boonecountymo.org/mrcjava/servlet/RMS01_MP.R00030s?run=1&D_DETAIL=1&R001=&R002=&outfmt=13"
 
     headers = {
 
@@ -41,7 +41,7 @@ def seven_hundred_report():
 def current_detainees():
 
     name = 'current_detainees'
-    url = 'https://report.boonecountymo.org/mrcjava/servlet/SH01_MP.R00250s?run=2'
+    url = "https://report.boonecountymo.org/mrcjava/servlet/RMS01_MP.R00030s?run=1&D_DETAIL=1&R001=&R002=&outfmt=13"
 
     headers = {
         'Host': 'report.boonecountymo.org',
