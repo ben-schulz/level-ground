@@ -14,14 +14,6 @@ def _today():
     return _day.strftime(formatstr)
 
 
-def datestamp_filename_today(name, stamp, suffix=None):
-
-    if suffix is not None:
-        return f"{name}_{stamp}.{suffix}"
-    else:
-        return f"{name}_{stamp}"
-
-
 def exp_backoff(initial_seconds=4, backoff_factor=1.1, max_wait_seconds=sys.maxsize):
 
     next_delay = initial_seconds
@@ -73,9 +65,16 @@ class PublicUrl:
         twelve_hours = datetime.timedelta(hours=12).total_seconds()
         self.retry_horizon = retry_horizon or twelve_hours
 
+    def datestamp_filename_today(self, suffix=None):
+
+        if suffix is not None:
+            return f"{self.name}_{self.datestamp}.{suffix}"
+        else:
+            return f"{self.name}_{self.datestamp}"
+
     def write_result(self, response):
 
-        outfile_basename = datestamp_filename_today(self.name, self.datestamp)
+        outfile_basename = self.datestamp_filename_today()
         out_path = os.path.join(self.output_dir, outfile_basename)
 
         with open(out_path, "wb") as f:
