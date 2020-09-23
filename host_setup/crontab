@@ -1,0 +1,7 @@
+EXTRACT_DUMP='/home/ec2-user/extract_dump'
+
+30 22  *  *  * /home/ec2-user/level-ground/env/bin/python /home/ec2-user/level-ground/run_jail_extracts.py
+30 00  *  *  * /home/ec2-user/level-ground/env/bin/python /home/ec2-user/level-ground/run_jail_extracts.py
+30 02  *  *  * /home/ec2-user/level-ground/env/bin/python /home/ec2-user/level-ground/run_jail_extracts.py
+30 04  *  *  * /home/ec2-user/level-ground/env/bin/python /home/ec2-user/level-ground/run_jail_extracts.py
+40 04  *  *  * /home/ec2-user/level-ground/env/bin/python /home/ec2-user/level-ground/run_jail_extracts.py
