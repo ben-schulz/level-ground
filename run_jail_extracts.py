@@ -142,6 +142,7 @@ def download_sevenhundred_report():
         file_dump_path,
         output_converter=excel_to_csv,
         datestamp=cst_datestamp,
+        file_suffix="xlsx",
         headers={
             "Host": "report.boonecountymo.org",
             "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:79.0) Gecko/20100101 Firefox/79.0",
@@ -169,6 +170,7 @@ def download_currentdetainees_report():
         file_dump_path,
         output_converter=excel_to_csv,
         datestamp=cst_datestamp,
+        file_suffix="xlsx",
         headers={
             "Host": "report.boonecountymo.org",
             "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv: 79.0) Gecko/20100101 Firefox/79.0",

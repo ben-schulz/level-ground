@@ -41,6 +41,7 @@ class PublicUrl:
         retry_horizon=None,
         output_converter=None,
         datestamp=None,
+        file_suffix=None,
     ):
 
         if not PublicUrl.is_allowed_verb(http_verb):
@@ -61,6 +62,7 @@ class PublicUrl:
         self.converted_suffix = "csv"
 
         self.datestamp = datestamp or _today()
+        self.file_suffix = file_suffix
 
         twelve_hours = datetime.timedelta(hours=12).total_seconds()
         self.retry_horizon = retry_horizon or twelve_hours
@@ -74,7 +76,7 @@ class PublicUrl:
 
     def write_result(self, response):
 
-        outfile_basename = self.datestamp_filename_today()
+        outfile_basename = self.datestamp_filename_today(suffix=self.file_suffix)
         out_path = os.path.join(self.output_dir, outfile_basename)
 
         with open(out_path, "wb") as f:
