@@ -49,7 +49,7 @@ class UrlScraper(HTMLParser):
 
 
 def get_report_page_urls():
-    frontpage = requests.get(frontpage_url)
+    frontpage = requests.get(frontpage_url, verify=False)
     front_text = frontpage.text
 
     sevenhundred_parser = UrlScraper("07:00 Report")

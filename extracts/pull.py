@@ -95,10 +95,10 @@ class PublicUrl:
         while not done:
 
             if "GET" == self.verb:
-                rsp = requests.get(self.url, headers=self.headers)
+                rsp = requests.get(self.url, headers=self.headers, verify=False)
 
             elif "POST" == self.verb:
-                rsp = requests.post(self.url, headers=self.headers)
+                rsp = requests.post(self.url, headers=self.headers, verify=False)
 
             if rsp.ok:
                 done = True
